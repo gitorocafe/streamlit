@@ -2,7 +2,10 @@ import streamlit as st
 import time
 
 
-st.title('streamlit 超入門desuka')
+st.title('RC梁検討')
+'''
+## RC構造設計規準・同解説 2010年版
+'''
 
 
 if st.checkbox('Show Image'):
@@ -26,10 +29,3 @@ for i in range(100):
     bar.progress(i+1)
     latest_iteration.text(i+1)
     time.sleep(0.05)
-
-'''
-# markdown記法のテスト
-## テスト
-### テスト
-
-'''
