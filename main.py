@@ -9,7 +9,7 @@ st.title('RC梁検討')
 
 
 if st.checkbox('Show Image'):
-    st.write('あはは')
+    st.write('Hello Streamlit')
 
 #option = st.selectbox('あなたの好きな数字は', list(range(1,11)))
 
