@@ -25,7 +25,9 @@ units_dic = {
 
 
 st.write('インタラクティブ')
-width = st.text_input('梁巾 B：' + units_dic['mm'])
+# 数値入力
+width = st.number_input('梁巾 B：' + units_dic['mm'], 0, 2000, 0)
+#width = st.text_input('梁巾 B：' + units_dic['mm'])
 depth = st.text_input('梁せい D：' + units_dic['mm'])
 Fc = st.text_input('コンクリートの設計基準強度 Fc：' + units_dic['N/mm2'])
 
