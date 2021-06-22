@@ -1,5 +1,4 @@
 import streamlit as st
-import time
 
 
 st.title('RC梁検討')
@@ -7,30 +6,17 @@ st.title('RC梁検討')
 ## RC構造設計規準・同解説 2010年版
 '''
 
-
-# if st.checkbox('Show Image'):
-#     st.write('Hello Streamlit2')
-
-
-
-
-
+#単位
 units_dic = {
     'mm' : 'mm',
     'cm' : 'cm',
     'm' : 'm',
+    'mm2': 'mm2',
     'N/mm2' : 'N/mm2',
     '本':'本'
 }
 
-
-st.write('インタラクティブ')
-# 数値入力
-width = st.number_input('梁巾 B：' + units_dic['mm'], 0, 2000, 0)
-#width = st.text_input('梁巾 B：' + units_dic['mm'])
-depth = st.text_input('梁せい D：' + units_dic['mm'])
-Fc = st.text_input('コンクリートの設計基準強度 Fc：' + units_dic['N/mm2'])
-
+#鉄筋径
 bar_Dia = (
     'D10',
     'D13',
@@ -41,18 +27,21 @@ bar_Dia = (
     'D29'
 )
 
-option = st.selectbox('鉄筋径：', list(bar_Dia))
-nos = st.text_input('1段目鉄筋本数：' + units_dic['本'])
 
-#st.write('あなたの好きな数字は',option,'です')
+#設計条件
+width = st.number_input('梁巾 B (' + units_dic['mm'] +')', 0, 1000, 0)
+depth = st.number_input('梁せい D (' + units_dic['mm'] +')', 0, 2000, 0)
+Fc = st.selectbox('コンクリートの設計基準強度 Fc (' + units_dic['N/mm2']+')',(18,21,24,27,30,33,36,39,42,45,48,51,54,57,60))
 
-# st.write('プログレスバーの表示')
-# 'start!!'
+#上端主筋
+option_top = st.selectbox('上端主筋径：', list(bar_Dia))
+nos_top1 = st.number_input('1段目鉄筋本数：' + units_dic['本'], 0, 10, 0)
+nos_top2 = st.number_input('2段目鉄筋本数：' + units_dic['本'], 0, 10, 0)
 
-# latest_iteration = st.empty()
-# bar = st.progress(0)
+#下端主筋
+option_bottom = st.selectbox('下端主筋径：', list(bar_Dia))
+nos_bottom1 = st.number_input('1段目鉄筋本数：' + units_dic['本'], 0, 10, 0)
+nos_bottom2 = st.number_input('2段目鉄筋本数：' + units_dic['本'], 0, 10, 0)
 
-# for i in range(100):
-#     bar.progress(i+1)
-#     latest_iteration.text(i+1)
-#     time.sleep(0.05)
+area = width * depth
+st.write('断面積 A：{:<20,.1f}'.format(area),units_dic['mm2'])
